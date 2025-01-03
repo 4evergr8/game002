@@ -1,0 +1,128 @@
+@charset "utf-8";
+/* ----------------------------------------------------------------------------
+ ダイアログ定義
+-----------------------------------------------------------------------------*/
+:root{
+  --dialog-font: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif, Arial; /* フォント */
+  --dialog-title-color: #FFFFFF;                        /* タイトル文字色 */
+  --dialog-title-shadow: rgba(0, 0, 0, 0.3);            /* タイトル文字影色 */
+  --dialog-title-margine-top: 12px;                       /* タイトル上位置 */
+  --dialog-title-margine-bottom: 6px;                     /* タイトル下位置 */
+  --dialog-text-top: 2em;                                 /* 本文上位置 */
+  --dialog-bottom: 12px;                                  /* 本文下位置 */
+  --dialog-font-size: 16px;                               /* 文字サイズ */
+  --dialog-text-color: #000000;                         /* 文字色 */
+  --dialog-button-color: #000000;                       /* ボタン文字色 */
+  --dialog-button-shadow: rgba(0,0,0,0.3);              /* ボタン影色 */
+  --dialog-border-size: 64px;                             /* 9スライスする画像のサイズ(192px(64px*3px) * 192px(64px*3px)) */
+  --dialog-border-size-nega: calc(var(--dialog-border-size) * -1);
+  --dialog-border-size-num: 64;                           /* 9スライスする画像のサイズ(数値) */
+  --dialog-button-height: 42px;                           /* ボタン高さ */
+  --dialog-button-width: 150px;                           /* ボタン幅 */
+  --dialog-overlay: rgba(0, 0, 0, 0.25);                /* 背景色 */
+  --dialog-img: url('./image/dialog_border.png');         /* ダイアログ画像 */
+  --dialog-img-ok: url('./image/dialog-ok.png');          /* ダイアログOK画像 */
+  --dialog-img-cancel: url('./image/dialog-cancel.png');  /* ダイアログCancel画像 */
+}
+/* ----------------------------------------------------------------------------
+ ダイアログ表示設定
+-----------------------------------------------------------------------------*/
+/* ダイアログ */
+.remodal {
+    padding: 0;
+    border: var(--dialog-border-size) solid;
+    font-size: var(--dialog-font-size);
+    border-image-slice: var(--dialog-border-size-num) fill;
+    border-image-source: var(--dialog-img);
+    border-image-repeat: repeat;
+    background-color: transparent;
+    border-color: transparent;
+}
+/* ダイアログのフォント */
+.remodal * {
+  font-family: --dialog-font;
+  font-weight: bold;
+}
+/* ダイアログのタイトル */
+.remodal_title{
+    margin: calc(var(--dialog-border-size-nega) + var(--dialog-title-margine-top)) 0 var(--dialog-title-margine-bottom) 0;
+    padding: 0;
+    font-size: 1.2em;
+    color: var(--dialog-title-color);
+    text-shadow:2px 2px 3px var(--dialog-title-shadow);
+    text-align: center;
+    letter-spacing: 0.05em;
+    cursor: default;
+}
+/* ダイアログの本文 */
+/* ※ 本文を設定するときだけ"margin-top: 1em"をスクリプトで設定 */
+.remodal_txt {
+    margin: 0;
+    padding: 0;
+    color: var(--dialog-text-color);
+    cursor: default;
+}
+/* ダイアログのボタン(OK用) */
+.remodal-confirm,
+.remodal-confirm:hover,
+.remodal-confirm:focus,
+.remodal-confirm:active {
+  height: var(--dialog-button-height);
+  width: var(--dialog-button-width);
+  margin: 0 1em 1em;
+  padding: 0;
+  background-image: var(--dialog-img-ok);
+  background-color: transparent;
+  color: var(--dialog-button-color);
+  filter: drop-shadow(0 2px 4px var(--dialog-button-shadow));
+  transition: all first;
+}
+/* ダイアログのボタン(キャンセル用) */
+.remodal-cancel,
+.remodal-cancel:hover,
+.remodal-cancel:focus,
+.remodal-cancel:active {
+  height: var(--dialog-button-height);
+  width: var(--dialog-button-width);
+  margin: 0 1em 1em;
+  padding: 0;
+  background-image: var(--dialog-img-cancel);
+  background-color: transparent;
+  color: var(--dialog-button-color);
+  filter: drop-shadow(0 2px 4px var(--dialog-button-shadow));
+  transition: all first;
+}
+/* ダイアログのボタン(マウスオーバー&押した時) */
+.remodal-confirm:hover,
+.remodal-confirm:active,
+.remodal-cancel:hover,
+.remodal-cancel:active {
+  transform: translateY(4px);
+  filter: drop-shadow(0 0 4px var(--dialog-button-shadow));
+}
+/* 背景色 */
+.remodal-overlay {
+  background: var(--dialog-overlay);
+}
+/* ----------------------------------------------------------------------------
+ ダイアログ アニメーション
+-----------------------------------------------------------------------------*/
+/* 9スライスしてtransform: scaleを使うと境界線が見えてしまうのでサイズ変更はしないようにする(他に解決方法がわからない。。) */
+@keyframes remodal-opening-keyframes {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+@keyframes remodal-closing-keyframes {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    filter: blur(0);
+  }
+}

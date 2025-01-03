@@ -1,0 +1,155 @@
+@charset "utf-8";
+/* CSS Document */
+
+.log_body {
+	width: 1474px;
+	height: 782px;
+	margin-top: 10px;
+	border: 1px solid rgba(174, 161, 156, .6);
+	padding: 0 15px 10px;
+	line-height: var(--line-height);
+}
+
+/********* log line *********/
+.log_body .log {
+  display:flex;
+	padding-top:10px;
+	margin-top:10px;
+	margin-top:10px;
+	border-top: 1px solid rgba(148, 127, 113, .6);
+	position: relative;
+	display: flex;
+}
+
+/* 繰り返しテキストは線・余白なし */
+.log_body .log.none {
+	padding-top:0;
+	margin-top:0;
+	border-top: none;
+}
+
+/* 最初のログは線なし */
+.log_body .log:first-child {
+	border-top: none;
+	margin-top:0;
+}
+
+.log_body .log .log_name,
+.log_body .log .log_text {
+  display: block;
+	box-sizing:border-box;
+	line-height:1.3;
+}
+
+/********* chara name *********/
+.log_body .log .log_name{
+	width:15%;
+	text-align: center;
+	position: relative;
+	padding-right: 0.5em;
+}
+.log_body .log.none .log_name{
+	visibility:hidden;
+}
+.log_body .log.none:first-child .log_name{
+	visibility:visible;
+}
+.log_body .log .log_name .chara_name{
+  display: inline-block;
+}
+.log_body .log .log_name.name_none{
+	display:none;
+}
+
+/********* mark *********/
+.log_body .log .mark{
+  display: none;
+  float: right;
+}
+
+/********* text *********/
+.log_body .log .log_text{
+	width:100%;
+}.log_body .log .log_name + .log_text{
+	width:84%;
+}
+
+/********* glink *********/
+.log_body .log .glink{
+	font-weight:bold;
+}
+
+
+
+/******************************************
+    vertical
+******************************************/
+.log_body.vertical {
+	margin:50px auto !important;
+  width: 85%;
+}
+.log_body.vertical .log {
+	padding-top:0;
+	margin-top:0;
+	padding-right:10px;
+	margin-right:10px;
+	border-right: 1px solid #ccc;
+	border-top: none;
+}
+.log_body.vertical .log.none {
+	padding-right:0;
+	margin-right:0;
+	border-right: none;
+}
+.log_body.vertical .log:first-child {
+	margin-right:0;
+}
+.log_body.vertical .log:last-child {
+	border-left: 1px solid #ccc;
+	padding-left:10px;
+}
+.log_body.vertical .log.none:first-child {
+	border-right: 1px solid #ccc;
+}
+
+/********* chara name *********/
+.log_body.vertical .log .log_name{
+	width:auto;
+	height:25%;
+	/*padding-top:5px;*/
+}
+
+/********* text *********/
+.log_body .log .log_text{
+	width: 100%;
+	margin-left: -1px;
+}.log_body .log .log_name + .log_text{
+	width: 84%;
+	padding-left: 1em;
+}
+
+
+/******************************************
+    Tate Chu Yoko
+******************************************/
+.tcy,.text_tcy span {
+	-webkit-text-combine: horizontal;
+	-ms-text-combine-horizontal: all;
+	text-combine-upright: all;
+}
+
+
+/******************************************
+    SAVE・LOAD
+******************************************/
+.save_list .log_name,
+.save_list .log_text {
+	display:inline;
+}
+.save_list .log_name.no_name .mark{
+	display:none;
+}
+.save_list .log_name .chara_name,
+.save_list .log_text .text {
+  all: initial !important;
+}

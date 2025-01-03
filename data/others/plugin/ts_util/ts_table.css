@@ -1,0 +1,90 @@
+@charset "utf-8";
+/* ----------------------------------------------------------------------------
+ テーブル定義
+-----------------------------------------------------------------------------*/
+:root{
+  --table-font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif, Arial; /* フォント */
+  --table-font-size: 36px;                                  /* 文字のサイズ */
+  --table-font-weight: normal;                              /* 文字の太さ */
+  --table-row-height: 1.5em;                                /* 行高 */
+  --table-row-width-left: 10em;                             /*  */
+  --table-row-width-right: 10em;                            /*  */
+  --table-row-width-right: 10em;                            /*  */
+  --table-text-align-left: left;
+  --table-text-align-right: right;
+  --table-row-img: url('./image/heart.png');                /*  */
+  --table-row-text-color: rgba(16, 160, 224, 1);          /*  */
+  --table-selected-img: url('./image/heart.png');           /*  */
+  --table-selected-text-color: rgba(16, 160, 224, 1);     /*  */
+  --table-hover-img: url('./image/heart_base.png');         /*  */
+  --table-hover-text-color: rgba(255, 0, 0, 1);           /*  */
+  --table-scrollbar-thumb: rgba(255,255,255,0.75);        /* スクロールバー 色 */
+  --table-scrollbar-track: rgba(0, 0, 0, 0.25);           /* スクロールバー 背景色 */
+  --table-scrollbar-width: 10px;                            /* スクロールバー 幅 */
+  --table-scrollbar-radius: 3px;                            /* スクロールバー 角丸サイズ */
+  --table-padding-left: 1em;                                /* 左端からの距離 */
+  --table-padding-right: 1em;                               /* 右端からの距離 */
+}
+/* ----------------------------------------------------------------------------
+ テーブル定義
+-----------------------------------------------------------------------------*/
+/* テーブル領域 */
+.scrollArea{
+  padding: 0;
+  overflow: auto;
+  background-color: transparent;
+  user-select:none; /* テーブルを選択できないようにする */
+}
+/* テーブル */
+.scrollArea table{
+  table-layout:fixed;
+  font-size: var(--table-font-size); 
+  font-weight: var(--table-font-weight);
+  font-family: var(--table-font-family);
+  border-collapse: collapse;
+}
+/* テーブル行 */
+.scrollArea tr{
+  color: var(--table-row-text-color);
+  background-image: var(--table-row-img);
+  background-size:100% 100%;
+  height: var(--table-row-height);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+/* テーブル行(選択中) */
+.scrollArea .selected tr{
+  color: var(--table-selected-text-color);
+  background-image: var(--table-selected-img);
+}
+/* テーブル行(ホバー) */
+.scrollArea tr:hover{
+  color: var(--table-hover-text-color);
+  background-image: var(--table-hover-img);
+}
+/* テーブルデータ(左側) */
+.scrollArea tr td:first-child{
+  text-align: var(--table-text-align-left);
+  width: var(--table-row-width-left);
+  padding-left: var(--table-padding-left);
+}
+/* テーブルデータ(右側) */
+.scrollArea tr td:last-child{
+  text-align: var(--table-text-align-right);
+  width: var(--table-row-width-right);
+  padding-right: var(--table-padding-right);
+}
+/*スクロールバー 横幅指定 */
+.scrollArea::-webkit-scrollbar {
+  width: var(--table-scrollbar-width);
+}
+/*スクロールバー 背景色・角丸指定*/
+.scrollArea::-webkit-scrollbar-track {
+  border-radius: var(--table-scrollbar-radius);
+  background-color: var(--table-scrollbar-track);
+}
+/*スクロールバー 色・角丸指定*/
+.scrollArea::-webkit-scrollbar-thumb {
+  border-radius: var(--table-scrollbar-radius);
+  background-color: var(--table-scrollbar-thumb);
+}

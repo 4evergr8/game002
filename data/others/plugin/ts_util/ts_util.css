@@ -1,0 +1,63 @@
+@charset "utf-8";
+/* ----------------------------------------------------------------------------
+ カーソル
+-----------------------------------------------------------------------------*/
+/* 矢印 */
+.cursol_default {
+  cursor: default !important;
+}
+/* 砂時計 */
+.cursol_wait {
+  cursor: wait !important;
+}
+/* ----------------------------------------------------------------------------
+ keyframes
+-----------------------------------------------------------------------------*/
+/* フェードイン */
+@keyframes ts_anim_fadein {
+  0% {opacity:0}
+  100% {opacity:1}
+}
+/* フェードアウト */
+@keyframes ts_anim_fadeout {
+  0% {opacity:1}
+  100% {opacity:0}
+}
+/* 回転 */
+@keyframes ts_anim_spin {
+	0% {transform: rotate(0deg);}
+	100% {transform: rotate(360deg);}
+}
+/* ゼリー */
+@keyframes ts_jelly {
+  from, to {transform: scale(1, 1);}
+  25% {transform: scale(0.9, 1.1);}
+  50% {transform: scale(1.1, 0.9);}
+  75% {transform: scale(0.95, 1.05);}
+}
+/* X移動 */
+@keyframes ts_anim_x_move {
+	0% { transform: translateX(0%); }
+  100% { transform: translateX(130%); }
+}
+/* Y移動 */
+@keyframes ts_anim_y_move {
+	0% { transform: translateY(0%); }
+  100% { transform: translateY(130%); }
+}
+/* ----------------------------------------------------------------------------
+ 背景
+-----------------------------------------------------------------------------*/
+/* 背景指定(z-indexを最背面にして最大表示) */
+.ts-bg {
+  z-index: -2147483648;
+  width: 100%;
+  height: 100%
+}
+/* ----------------------------------------------------------------------------
+ 改行
+-----------------------------------------------------------------------------*/
+/* 改行可能にする */
+.ts-newline {
+  white-space: pre;
+}
